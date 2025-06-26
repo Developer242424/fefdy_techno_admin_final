@@ -292,12 +292,17 @@ function updateNavigationButtons() {
   const nextBtn = document.getElementById("next-btn");
   const prevBtn = document.getElementById("prev-btn");
 
+  const question = questions[currentQuestion];
+  const correctAnswerCount = question.correct.length; // The number of correct answers (1 or 2)
   const userAnswer = userAnswers[currentQuestion];
-  const hasAnswered = Array.isArray(userAnswer) && userAnswer.length > 0;
+
+  // Check if the user has selected the required number of answers
+  const hasAnswered =
+    Array.isArray(userAnswer) && userAnswer.length === correctAnswerCount;
 
   // ✅ NEXT BUTTON:
-  // Enable only if the current question is answered
-  nextBtn.disabled = !hasAnswered; // Disable if no answer is selected
+  // Enable only if the required number of correct answers have been selected
+  nextBtn.disabled = !hasAnswered; // Disable if the required number of answers is not selected
 
   // ✅ PREVIOUS BUTTON:
   // Enable only if:
