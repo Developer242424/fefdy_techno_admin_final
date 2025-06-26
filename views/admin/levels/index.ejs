@@ -1,0 +1,37 @@
+<% if (typeof title !=='undefined' ) { %>
+    <h1>
+        <%= title %>
+    </h1>
+    <% } else { %>
+        <h1>Fefdy</h1>
+        <% } %>
+
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header text-end">
+                        <button class="btn btn-info" onclick="OpenModal('level_create_modal')"><span><i
+                                    class="ti ti-code-plus px-1"></i><span>Add level</span></span></button>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-bordered table-striped" id="levels-table">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Subject</th>
+                                    <th>Topic</th>
+                                    <th>Levels</th>
+                                    <th>Title</th>
+                                    <th>Description</th>
+                                    <th>Thumbnail</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+            <%- include('./create_modal.ejs') %>
+                <%- include('./edit_modal.ejs') %>

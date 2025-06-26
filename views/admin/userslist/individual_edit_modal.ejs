@@ -1,0 +1,111 @@
+<div class="modal modal-extra-large" id="individual_edit_modal">
+    <div class="modal-header">
+        <h3>Edit Individual Users</h3>
+        <button type="button" class="close">
+            <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_7_7)">
+                    <path d="M25.5 8.5L8.5 25.5" stroke="#DADADA" stroke-width="2.125" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M9 9L26 26" stroke="#DADADA" stroke-width="2.125" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </g>
+                <defs>
+                    <clipPath id="clip0_7_7">
+                        <rect width="34" height="34" fill="white" />
+                    </clipPath>
+                </defs>
+            </svg>
+        </button>
+    </div>
+    <form id="individual_edit_form" class="modal-body" method="post" enctype="multipart/form-data">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="edit_individual_name">Name</label>
+                        <input class="form-control" type="text" name="edit_individual_name" id="edit_individual_name"
+                            placeholder="Name...">
+                        <p class="validate_error text-danger" id="edit_individual_name_error"></p>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="edit_individual_email">Email Address</label>
+                        <input class="form-control" type="email" name="edit_individual_email" id="edit_individual_email"
+                            placeholder="Email Address...">
+                        <p class="validate_error text-danger" id="edit_individual_email_error"></p>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="edit_individual_phone">Phone Number</label>
+                        <input class="form-control" type="text" name="edit_individual_phone" id="edit_individual_phone"
+                            placeholder="phone number...">
+                        <p class="validate_error text-danger" id="edit_individual_phone_error"></p>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="edit_individual_username">User Name</label>
+                        <input class="form-control" type="text" name="edit_individual_username"
+                            id="edit_individual_username" placeholder="User Name...">
+                        <p class="validate_error text-danger" id="edit_individual_username_error"></p>
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="edit_individual_password">Password</label>
+                        <input class="form-control" type="password" name="edit_individual_password"
+                            id="edit_individual_password" placeholder="password">
+                        <p class="validate_error text-danger" id="edit_individual_password_error"></p>
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="edit_individual_subject">Subject</label>
+                        <select name="edit_individual_subject[]" id="edit_individual_subject" multiple
+                            class="form-control">
+                            <option value="">Select Subject</option>
+                        </select>
+                        <p class="validate_error text-danger" id="edit_individual_subject_error"></p>
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="edit_individual_level">Levels</label>
+                        <select name="edit_individual_level" id="edit_individual_level" class="form-control">
+                            <option value="">Select level</option>
+                            <% for (let i=1; i <=lvlftopic.levels; i++) { %>
+                                <option value="<%= i %>">
+                                    <%= i %>
+                                </option>
+                                <% } %>
+                        </select>
+                        <p class="validate_error text-danger" id="edit_individual_level_error"></p>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="edit_individual_profile_image">Profile pictures</label>
+                        <input type="file" accept=".jpg,.jpeg,.png,.webp" class="form-control"
+                            name="edit_individual_profile_image" id="edit_individual_profile_image">
+                        <p class="validate_error text-danger" id="edit_individual_profile_image_error"></p>
+                        <a target="_blank">View file...</a>
+                        <input type="hidden" name="edit_individual_id" id="edit_individual_id">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="options">
+                    <button class="cancel" type="button">Cancel</button>
+                    <button class="submit form-submit-button" id="individual_edit_btn" type="submit">Submit</button>
+                </div>
+            </div>
+
+
+        </div>
+    </form>
+</div>

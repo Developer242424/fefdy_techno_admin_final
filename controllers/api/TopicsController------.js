@@ -1,0 +1,135 @@
+const asyncHandler = require("express-async-handler");
+const { check, validationResult } = require("express-validator");
+const multer = require("multer");
+const User = require("../../models/user");
+const Subjects = require("../../models/subjects");
+const Topics = require("../../models/topics");
+const Level = require("../../models/level");
+const Subtopic = require("../../models/subtopic");
+const Organisation = require("../../models/organisation");
+const OrgDetails = require("../../models/org_details");
+const WatchHistory = require("../../models/watchhistory");
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+const { where, Sequelize, DATE } = require("sequelize");
+const { render } = require("ejs");
+require("dotenv").config();
+const session = require("express-session");
+const getDynamicUploader = require("../../middleware/upload");
+const moment = require("moment");
+const { fn } = require("sequelize");
+const path = require("path");
+const fs = require("fs");
+const { title } = require("process");
+
+class TopicsController {
+  constructor() {
+    this.data = asyncHandler(async (req, res) => {
+      try {
+        const { subject } = req.body;
+        const user = req.session.user;
+
+        if (!subject) {
+          return res
+            .status(400)
+            .json({ status: 400, message: "Subject is required" });
+        }
+
+        const topics = await Topics.findAll({
+          where: { subject, is_deleted: null },
+        });
+
+        const data = await Promise.all(
+          topics.map(async (value) => {
+            const completedLevels = await this.LevelsCompletionsCount(
+              user,
+              value.id
+            );
+            return {
+              id: value.id,
+              subject: value.subject,
+              title: value.title,
+              description: value.description,
+              thumbnail: value.thumbnail,
+              levels: value.levels,
+              comp_levels: completedLevels,
+            };
+          })
+        );
+
+        return res.status(200).json({ status: 200, data });
+      } catch (error) {
+        console.error("Get error:", error);
+        return res.status(500).json({
+          status: 500,
+          message: "Internal server error - " + error.message,
+        });
+      }
+    });
+  }
+
+  LevelsCompletionsCount = async (user, topicId) => {
+    try {
+      if (!topicId) {
+        throw new Error("Topic ID is required");
+      }
+
+      const org_details = await OrgDetails.findOne({
+        where: {
+          org_id: user.org_id,
+          standard: user.standard,
+          section: user.section,
+          is_deleted: null,
+        },
+      });
+
+      if (!org_details) {
+        throw new Error("Organisation details not found");
+      }
+
+      const levels = await Level.findAll({
+        where: { topic: topicId, is_deleted: null },
+      });
+
+      const completedCounts = await Promise.all(
+        levels.map(async (level) => {
+          const subtopics = await Subtopic.findAll({
+            where: {
+              level_id: level.id,
+              is_deleted: null,
+            },
+          });
+
+          let completedCount = 0;
+
+          for (const sub of subtopics) {
+            const categories = JSON.parse(sub.category || "[]");
+
+            const watchHistory = await WatchHistory.findAll({
+              where: {
+                user_id: user.id,
+                subtopic: sub.id,
+                category: { [Op.in]: categories },
+                is_deleted: null,
+                status: "1",
+              },
+            });
+
+            if (watchHistory.length === categories.length) {
+              completedCount++;
+            }
+          }
+
+          return completedCount;
+        })
+      );
+
+      return completedCounts.filter((c) => c > 0).length;
+    } catch (error) {
+      console.error("Level Completion Error:", error.message);
+      return 0;
+    }
+  };
+}
+
+module.exports = new TopicsController();

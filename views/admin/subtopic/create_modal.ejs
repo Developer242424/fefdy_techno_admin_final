@@ -1,0 +1,128 @@
+<div class="modal modal-extra-large" id="subtopic_create_modal">
+    <div class="modal-header">
+        <h3>Add sub Topic</h3>
+        <button type="button" class="close">
+            <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_7_7)">
+                    <path d="M25.5 8.5L8.5 25.5" stroke="#DADADA" stroke-width="2.125" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M9 9L26 26" stroke="#DADADA" stroke-width="2.125" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </g>
+                <defs>
+                    <clipPath id="clip0_7_7">
+                        <rect width="34" height="34" fill="white" />
+                    </clipPath>
+                </defs>
+            </svg>
+        </button>
+    </div>
+    <form id="subtopic_create_form" class="modal-body" method="post" enctype="multipart/form-data">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <select name="subject" id="subject" class="form-control">
+                            <option value="">Select Subject</option>
+
+                        </select>
+                        <p class="validate_error text-danger" id="subject_error"></p>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="topic">Topic</label>
+                        <select name="topic" id="topic" class="form-control">
+                            <option value="">Select Topic</option>
+
+                        </select>
+                        <p class="validate_error text-danger" id="topic_error"></p>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="level">Level</label>
+                        <select name="level" id="level" class="form-control">
+                            <option value="">Select Level</option>
+                        </select>
+                        <p class="validate_error text-danger" id="level_error"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="thumbnail">Thumbnail</label>
+                        <input type="file" accept=".jpg,.jpeg,.png,.webp" class="form-control" name="thumbnail"
+                            id="thumbnail">
+                        <p class="validate_error text-danger" id="thumbnail_error"></p>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input class="form-control" type="text" name="title" id="title"
+                            placeholder="Type a brief title...">
+                        <p class="validate_error text-danger" id="title_error"></p>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+
+                    <div class="form-group">
+                        <label for="category">Category</label>
+                        <select name="category[]" id="category" class="form-control" multiple>
+                            <option value="">Select Category</option>
+                            <% category.forEach( (value)=> { %>
+                                <option value="<%= value.id %>">
+                                    <%= value.title %>
+                                </option>
+                                <% }) %>
+                        </select>
+                        <p class="validate_error text-danger" id="category_error"></p>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+            <div class="row categories_div">
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="sort_order">Sort Order</label>
+                        <input class="form-control" type="number" name="sort_order" id="sort_order">
+                        <p class="validate_error text-danger" id="sort_order_error"></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image Input -->
+
+
+            <div class="row">
+                <div class="form-group">
+                    <label for="subject">Description</label>
+                    <textarea class="form-control" rows="4" name="description" id="description"
+                        placeholder="Type a brief description..."></textarea>
+                    <p class="validate_error text-danger" id="description_error"></p>
+                </div>
+            </div>
+
+
+            <!-- PDF Input -->
+
+
+
+        </div>
+        <div class="modal-footer">
+            <div class="options">
+                <button class="cancel" type="button">Cancel</button>
+                <button class="submit form-submit-button" id="subtopic_create_btn" type="submit">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>

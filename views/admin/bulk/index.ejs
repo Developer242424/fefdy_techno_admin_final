@@ -1,0 +1,131 @@
+<% if (typeof title !=='undefined' ) { %>
+    <h1>
+        <%= title %>
+    </h1>
+    <% } else { %>
+        <h1>Fefdy</h1>
+        <% } %>
+
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <form id="export_create_form" class="row">
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label for="export_org_id">Organisation</label>
+                                                <select name="export_org_id" class="form-control" id="export_org_id">
+                                                    <option value="">Select Organisation</option>
+                                                </select>
+                                                <p class="validate_error text-danger" id="export_org_id_error"></p>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label for="export_standard">Standard</label>
+                                                <select name="export_standard" class="form-control"
+                                                    id="export_standard">
+                                                    <option value="">Select Standard</option>
+                                                </select>
+                                                <p class="validate_error text-danger" id="export_standard_error"></p>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label for="export_section">Section</label>
+                                                <select name="export_section" class="form-control" id="export_section">
+                                                    <option value="">Select Section</option>
+                                                    <option value="A">A</option>
+                                                    <option value="B">B</option>
+                                                    <option value="C">C</option>
+                                                    <option value="D">D</option>
+                                                    <option value="E">E</option>
+                                                    <option value="F">F</option>
+                                                </select>
+                                                <p class="validate_error text-danger" id="export_section_error"></p>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-3 d-flex align-items-end export"
+                                            style="padding-top: 30px; padding-bottom: 30px;">
+                                            <button type="submit" class="btn btn-success" aria-label="Export Students">
+                                                <i class="fa fa-download" aria-hidden="true"></i> Export Students
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- export end  -->
+
+
+                            <!-- import start -->
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <form id="import_create_form" class="row">
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label for="import_org_id">Organisation</label>
+                                                <select name="import_org_id" class="form-control" id="import_org_id">
+                                                    <option value="">Select Organisation</option>
+                                                </select>
+                                                <p class="validate_error text-danger" id="import_org_id_error"></p>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label for="import_standard">Standard</label>
+                                                <select name="import_standard" class="form-control"
+                                                    id="import_standard">
+                                                    <option value="">Select Standard</option>
+                                                </select>
+                                                <p class="validate_error text-danger" id="import_standard_error"></p>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label for="import_section">Section</label>
+                                                <select name="import_section" class="form-control" id="import_section">
+                                                    <option value="">Select Section</option>
+                                                    <option value="A">A</option>
+                                                    <option value="B">B</option>
+                                                    <option value="C">C</option>
+                                                    <option value="D">D</option>
+                                                    <option value="E">E</option>
+                                                    <option value="F">F</option>
+                                                </select>
+                                                <p class="validate_error text-danger" id="import_section_error"></p>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label for="import_file_upload">File Upload</label>
+                                                <input type="file" accept=".xlsx" class="form-control"
+                                                    name="import_file_upload" id="import_file_upload">
+                                                <p class="validate_error text-danger" id="import_file_upload_error"></p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-12 mt-4 d-flex justify-content-center gap-5">
+                                                <button type="submit" class="btn btn-primary">
+                                                    <i class="fa fa-upload"></i>Import Students
+                                                </button>
+                                                <a href="/admin/students/example-export" target="_blank"
+                                                    class="btn btn-info">
+                                                    <i class="fa fa-file-excel-o"></i> Download Sample Sheet
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- import enx -->
+                        </div>
+                    </div>
+                </div>
+            </div>

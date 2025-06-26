@@ -1,0 +1,93 @@
+<% if (typeof title !=='undefined' ) { %>
+    <h1>
+        <%= title %>
+    </h1>
+    <% } else { %>
+        <h1>Fefdy</h1>
+        <% } %>
+
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="subject_filter">Subject</label>
+                                        <select name="subject_filter" id="subject_filter" class="form-control">
+                                            <option value="">Select Subject</option>
+                                        </select>
+                                        <p class="validate_error text-danger" id="subject_filter_error"></p>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="topic_filter">Topic</label>
+                                        <select name="topic_filter" id="topic_filter" class="form-control">
+                                            <option value="">Select Topic</option>
+                                        </select>
+                                        <p class="validate_error text-danger" id="topic_filter_error"></p>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="level_filter">Level</label>
+                                        <select name="level_filter" id="level_filter" class="form-control">
+                                            <option value="">Select Level</option>
+                                        </select>
+                                        <p class="validate_error text-danger" id="level_filter_error"></p>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="sub_topic_filter">Sub Topic</label>
+                                        <select name="sub_topic_filter" class="form-control" id="sub_topic_filter">
+                                            <option value="">Select Sub Topic</option>
+                                        </select>
+                                        <p class="validate_error text-danger" id="sub_topic_filter_error"></p>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="question_type_filter">Question Type</label>
+                                        <select name="question_type_filter" class="form-control"
+                                            id="question_type_filter">
+                                            <option value="">Select Question Type</option>
+                                        </select>
+                                        <p class="validate_error text-danger" id="question_type_filter_error"></p>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <button type="button" onclick="LoadTableData()"
+                                        class="btn btn-info form-submit-button_1 mt-4">submit</button>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table table-bordered table-striped" id="questions-table">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Question</th>
+                                    <th>Thumbnail</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!--  -->
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <%- include('./edit_modal.ejs') %>
+                <!-- <%- include('./math_edit_modal.ejs') %> -->

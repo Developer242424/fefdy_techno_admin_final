@@ -1,0 +1,66 @@
+<% if (typeof title !=='undefined' ) { %>
+    <h1>
+        <%= title %>
+    </h1>
+    <% } else { %>
+        <h1>Fefdy</h1>
+        <% } %>
+
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <form id="subject_create_form" class="row">
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label for="subject">Subject</label>
+                                                <input type="text" class="form-control" name="subject" id="subject">
+                                                <p class="validate_error text-danger" id="subject_error"></p>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label for="thumbnail">Thumbnail</label>
+                                                <input type="file" accept=".jpg,.jpeg,.png,.webp," class="form-control"
+                                                    name="thumbnail" id="thumbnail">
+                                                <p class="validate_error text-danger" id="thumbnail_error"></p>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4 text-center">
+                                            <div class="form-group mt-4">
+                                                <button type="submit" class="btn btn-info form-submit-button">Add Subject</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="card">
+                    <!--<div class="card-header">-->
+                    <!--</div>-->
+                    <div class="card-body">
+                        <table class="table table-bordered table-striped" id="subjects-table">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Subject</th>
+                                    <th>Thumbnail</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- JS will populate rows here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="card">
+                    <%- include('./edit_modal.ejs') %>
+                </div>
+            </div>

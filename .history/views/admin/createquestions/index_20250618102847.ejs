@@ -1,0 +1,306 @@
+<% if (typeof title !=='undefined' ) { %>
+  <h1>
+    <%= title %>
+  </h1>
+  <% } else { %>
+    <h1>Fefdy</h1>
+    <% } %>
+
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-body">
+            <div class="container">
+              <div class="row">
+                <div class="col-sm-12">
+                  <form id="export_create_form" class="row">
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label for="export_org_id">Subject</label>
+                        <select name="subject" id="subject" class="form-control">
+                          <option value="">Select Subject</option>
+                        </select>
+                        <p class="validate_error text-danger" id="subject_error"></p>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label for="export_standard">Topic</label>
+                        <select name="export_topic" class="form-control" id="export_topic">
+                          <option value="">Select Topic</option>
+                          <option value="Topic 1">Select Topic 1</option>
+                        </select>
+                        <p class="validate_error text-danger" id="export_standard_error"></p>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label for="export_standard">Level</label>
+                        <select name="export_level" class="form-control" id="export_level">
+                          <option value="">Select Level</option>
+                          <option value="Level 1">Select Level 1</option>
+                        </select>
+                        <p class="validate_error text-danger" id="export_standard_error"></p>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label for="export_standard">Sub Topic</label>
+                        <select name="export_sub_topic" class="form-control" id="export_sub_topic">
+                          <option value="">Select Sub Topic</option>
+                          <option value="sub_topic 1">Select Sub Topic 1</option>
+                        </select>
+                        <p class="validate_error text-danger" id="export_standard_error"></p>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label for="export_standard">Question Type</label>
+                        <select name="export_question_type" class="form-control" id="export_question_type">
+                          <option value="">Select Question Type</option>
+                          <option value="Question_Type 1">Choose</option>
+                          <option value="Question_Type 2">Math The Following</option>
+                        </select>
+
+                        <p class="validate_error text-danger" id="export_standard_error"></p>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+        <form id="dynamicQuestionForm">
+          <div id="questionCardContainer"></div>
+        </form>
+      </div>
+      <script type="text/template" id="questionCardTemplate">
+  <div class="card question-card mt-3">
+    <div class="card-body">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <form class="row">
+              <div class="col-sm-11">
+                <div class="row">
+                  <div class="col-sm-9">
+                    <div class="form-group">
+                      <label>Question</label>
+                      <textarea class="form-control" rows="4"></textarea>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <label>Thumbnail</label><br>
+                      <div class="thumbnail-box" onclick="this.querySelector('input[type=file]').click();">
+  <i class="material-icons">image</i>
+  <img class="thumbnail-preview-img" style="display:none;">
+  <input type="file" class="thumbnail-input" accept="image/*" style="display:none;" onchange="previewThumbnail(this)">
+</div>
+
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <!-- Option 1 -->
+                  <div class="col-sm-3">
+                    <div class="row border-1">
+                      <div class="col-sm-8">
+                        <div class="form-group">
+                          <label><input type="checkbox"> Option -1</label>
+                          <textarea class="form-control" rows="4"></textarea>
+                        </div>
+                      </div>
+                      <div class="col-sm-4">
+                        <div class="form-group">
+                          <label>Thumbnail</label><br>
+                          <div class="thumbnail-box" onclick="this.querySelector('input[type=file]').click();">
+  <i class="material-icons">image</i>
+  <img class="thumbnail-preview-img" style="display:none;">
+  <input type="file" class="thumbnail-input" accept="image/*" style="display:none;" onchange="previewThumbnail(this)">
+</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Option 2 -->
+                  <div class="col-sm-3">
+                    <div class="row border-1">
+                      <div class="col-sm-8">
+                        <div class="form-group">
+                          <label><input type="checkbox"> Option -2</label>
+                          <textarea class="form-control" rows="4"></textarea>
+                        </div>
+                      </div>
+                      <div class="col-sm-4">
+                        <div class="form-group">
+                          <label>Thumbnail</label><br>
+                          <div class="thumbnail-box" onclick="this.querySelector('input[type=file]').click();">
+  <i class="material-icons">image</i>
+  <img class="thumbnail-preview-img" style="display:none;">
+  <input type="file" class="thumbnail-input" accept="image/*" style="display:none;" onchange="previewThumbnail(this)">
+</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Option 3 -->
+                  <div class="col-sm-3">
+                    <div class="row border-1">
+                      <div class="col-sm-8">
+                        <div class="form-group">
+                          <label><input type="checkbox"> Option -3</label>
+                          <textarea class="form-control" rows="4"></textarea>
+                        </div>
+                      </div>
+                      <div class="col-sm-4">
+                        <div class="form-group">
+                          <label>Thumbnail</label><br>
+                          <div class="thumbnail-box" onclick="this.querySelector('input[type=file]').click();">
+  <i class="material-icons">image</i>
+  <img class="thumbnail-preview-img" style="display:none;">
+  <input type="file" class="thumbnail-input" accept="image/*" style="display:none;" onchange="previewThumbnail(this)">
+</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Option 4 -->
+                  <div class="col-sm-3">
+                    <div class="row border-1">
+                      <div class="col-sm-8">
+                        <div class="form-group">
+                          <label><input type="checkbox"> Option -4</label>
+                          <textarea class="form-control" rows="4"></textarea>
+                        </div>
+                      </div>
+                      <div class="col-sm-4">
+                        <div class="form-group">
+                          <label>Thumbnail</label><br>
+                          <div class="thumbnail-box" onclick="this.querySelector('input[type=file]').click();">
+  <i class="material-icons">image</i>
+  <img class="thumbnail-preview-img" style="display:none;">
+  <input type="file" class="thumbnail-input" accept="image/*" style="display:none;" onchange="previewThumbnail(this)">
+</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Add/Delete buttons -->
+              <div class="col-sm-1 d-flex flex-column justify-content-between align-items-center" style="height: 100%;">
+                <i class="material-icons delte delete-icon" style="cursor: pointer;">delete</i>
+                <div style="flex-grow: 1;"></div>
+                <i class="material-icons add add-icon" style="cursor: pointer;">add</i>
+              </div>
+             
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</script>
+
+      <script type="text/template" id="matchquestionCardTemplate">
+  <!-- Question Block -->
+      <div class="card question-card mt-3">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <label>Question</label>
+                <textarea class="form-control" rows="1"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </script>
+      <!-- First Instruction + Options Block -->
+      <script type="text/template" id="matchInstructionCardTemplate">
+    <div class="card question-card match-instruction-card mt-3">
+      <div class="card-body">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12">
+              <form class="row">
+                <div class="col-sm-12">
+                  <div class="row">
+                    <div class="col-sm-11">
+                      <div class="form-group">
+                        <label>Instruction</label>
+                        <textarea class="form-control" rows="1"></textarea>
+                      </div>
+                      <div class="row">
+                        <!-- Option 1 -->
+                        <div class="col-sm-6">
+                          <div class="row border-1">
+                            <div class="col-sm-8">
+                              <div class="form-group">
+                                <label>Label</label>
+                                <textarea class="form-control" rows="4"></textarea>
+                              </div>
+                            </div>
+                            <div class="col-sm-4">
+                              <div class="form-group">
+                                <label>Thumbnail</label><br>
+                                <div class="thumbnail-box" onclick="this.querySelector('input[type=file]').click();">
+                                  <i class="material-icons">image</i>
+                                  <img class="thumbnail-preview-img" style="display:none;">
+                                  <input type="file" class="thumbnail-input" accept="image/*" style="display:none;" onchange="previewThumbnail(this)">
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- Option 2 -->
+                        <div class="col-sm-6">
+                          <div class="row border-1">
+                            <div class="col-sm-8">
+                              <div class="form-group">
+                                <label>Label</label>
+                                <textarea class="form-control" rows="4"></textarea>
+                              </div>
+                            </div>
+                            <div class="col-sm-4">
+                              <div class="form-group">
+                                <label>Thumbnail</label><br>
+                                <div class="thumbnail-box" onclick="this.querySelector('input[type=file]').click();">
+                                  <i class="material-icons">image</i>
+                                  <img class="thumbnail-preview-img" style="display:none;">
+                                  <input type="file" class="thumbnail-input" accept="image/*" style="display:none;" onchange="previewThumbnail(this)">
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Add/Delete Icons -->
+                    <div class="col-sm-1 d-flex flex-column justify-content-between align-items-center" style="height: 100%;">
+                      <i class="material-icons delete-icon delte" style="cursor: pointer;">delete</i>
+                      <div style="flex-grow: 1;"></div>
+                      <i class="material-icons add-icon add" style="cursor: pointer;">add</i>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+ 
+</script>

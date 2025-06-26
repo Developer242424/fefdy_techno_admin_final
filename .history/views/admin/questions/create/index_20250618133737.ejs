@@ -1,0 +1,290 @@
+<% if (typeof title !=='undefined' ) { %>
+    <h1>
+        <%= title %>
+    </h1>
+    <% } else { %>
+        <h1>Fefdy</h1>
+        <% } %>
+
+            <div class="col-sm-12">
+                <form id="questions_create_form" method="post" enctype="multipart/form-data" class="row">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label for="subject">Subject</label>
+                                            <select name="subject" id="subject" class="form-control">
+                                                <option value="">Select Subject</option>
+                                            </select>
+                                            <p class="validate_error text-danger" id="subject_error"></p>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label for="topic">Topic</label>
+                                            <select name="topic" id="topic" class="form-control">
+                                                <option value="">Select Topic</option>
+                                            </select>
+                                            <p class="validate_error text-danger" id="topic_error"></p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label for="level">Level</label>
+                                            <select name="level" id="level" class="form-control">
+                                                <option value="">Select Level</option>
+                                            </select>
+                                            <p class="validate_error text-danger" id="level_error"></p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label for="sub_topic">Sub Topic</label>
+                                            <select name="sub_topic" class="form-control" id="sub_topic">
+                                                <option value="">Select Sub Topic</option>
+                                            </select>
+                                            <p class="validate_error text-danger" id="sub_topic_error"></p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label for="question_type">Question Type</label>
+                                            <select name="question_type" class="form-control" id="question_type">
+                                                <option value="">Select Question Type</option>
+                                            </select>
+                                            <p class="validate_error text-danger" id="question_type_error"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div id="questionCardContainer"></div>
+                </form>
+            </div>
+            <script type="text/template" id="questionCardTemplate">
+  <div class="card question-card mt-3">
+    <div class="card-body">
+      <div class="container">
+        <div class="row">         
+              <div class="col-sm-11">
+                <div class="row">
+                  <div class="col-sm-9">
+                    <div class="form-group">
+                      <label>Question</label>
+                      <textarea name="array[][question][text]" class="form-control" rows="4"></textarea>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <label>Thumbnail</label><br>
+                      <div class="thumbnail-box" onclick="this.querySelector('input[type=file]').click();">
+  <i class="material-icons">image</i>
+  <img class="thumbnail-preview-img" style="display:none;">
+  <input type="file" name ="array[][question][thumbnail]" class="thumbnail-input" accept="image/*" style="display:none;" onchange="previewThumbnail(this)">
+</div>
+
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <!-- Option 1 -->
+                  <div class="col-sm-3">
+                    <div class="row border-1">
+                      <div class="col-sm-8">
+                        <div class="form-group">
+                          <label><input type="checkbox" name="array[][option][option_a][option_a][is_answer]"/> Option A</label>
+                          <textarea name ="array[][option][option_a][text]" class="form-control" rows="4"></textarea>
+                        </div>
+                      </div>
+                      <div class="col-sm-4">
+                        <div class="form-group">
+                          <label>Thumbnail</label><br>
+                          <div class="thumbnail-box" onclick="this.querySelector('input[type=file]').click();">
+  <i class="material-icons">image</i>
+  <img class="thumbnail-preview-img" style="display:none;">
+  <input type="file" name ="array[][option][option_a][option_a][thumbnail]" class="thumbnail-input" accept="image/*" style="display:none;" onchange="previewThumbnail(this)">
+</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Option 2 -->
+                  <div class="col-sm-3">
+                    <div class="row border-1">
+                      <div class="col-sm-8">
+                        <div class="form-group">
+                          <label><input type="checkbox" name="array[][option][option_b][option_b][is_answer]"/> Option B</label>
+                          <textarea name ="array[][option][option_b][text]" class="form-control" rows="4"></textarea>
+                        </div>
+                      </div>
+                      <div class="col-sm-4">
+                        <div class="form-group">
+                          <label>Thumbnail</label><br>
+                          <div class="thumbnail-box" onclick="this.querySelector('input[type=file]').click();">
+  <i class="material-icons">image</i>
+  <img class="thumbnail-preview-img" style="display:none;">
+  <input type="file" name ="array[][option][option_b][option_b][thumbnail]" class="thumbnail-input" accept="image/*" style="display:none;" onchange="previewThumbnail(this)">
+</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Option 3 -->
+                  <div class="col-sm-3">
+                    <div class="row border-1">
+                      <div class="col-sm-8">
+                        <div class="form-group">
+                          <label><input type="checkbox" name="array[][option][option_c][option_c][is_answer]"/> Option C</label>
+                          <textarea name ="array[][option][option_c][text]" class="form-control" rows="4"></textarea>
+                        </div>
+                      </div>
+                      <div class="col-sm-4">
+                        <div class="form-group">
+                          <label>Thumbnail</label><br>
+                          <div class="thumbnail-box" onclick="this.querySelector('input[type=file]').click();">
+  <i class="material-icons">image</i>
+  <img class="thumbnail-preview-img" style="display:none;">
+  <input type="file" name ="array[][option][option_c][option_c][thumbnail]" class="thumbnail-input" accept="image/*" style="display:none;" onchange="previewThumbnail(this)">
+</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Option 4 -->
+                  <div class="col-sm-3">
+                    <div class="row border-1">
+                      <div class="col-sm-8">
+                        <div class="form-group">
+                          <label><input type="checkbox" name="array[][option][option_d][option_d][is_answer]"/> Option D</label>
+                          <textarea name ="array[][option][option_d][text]" class="form-control" rows="4"></textarea>
+                        </div>
+                      </div>
+                      <div class="col-sm-4">
+                        <div class="form-group">
+                          <label>Thumbnail</label><br>
+                          <div class="thumbnail-box" onclick="this.querySelector('input[type=file]').click();">
+  <i class="material-icons">image</i>
+  <img class="thumbnail-preview-img" style="display:none;">
+  <input type="file" name ="array[][option][option_d][option_d][thumbnail]" class="thumbnail-input" accept="image/*" style="display:none;" onchange="previewThumbnail(this)">
+</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Add/Delete buttons -->
+              <div class="col-sm-1 d-flex flex-column justify-content-between align-items-center" style="height: 100%;">
+                <i class="material-icons delte delete-icon" style="cursor: pointer;">delete</i>
+                <div style="flex-grow: 1;"></div>
+                <i class="material-icons add add-icon" style="cursor: pointer;">add</i>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</script>
+
+            <script type="text/template" id="matchquestionCardTemplate">
+  <!-- Question Block -->
+            <div class="card question-card mt-3">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label>Question</label>
+                                <textarea name="array[][question]" class="form-control" rows="1"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </script>
+            <!-- First Instruction + Options Block -->
+            <script type="text/template" id="matchInstructionCardTemplate">
+    <div class="card question-card match-instruction-card mt-3">
+      <div class="card-body">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12">
+                <div class="col-sm-12">
+                  <div class="row">
+                    <div class="col-sm-11">
+                      <div class="form-group">
+                        <label>Instruction</label>
+                        <textarea name="array[][instruction]" class="form-control" rows="1"></textarea>
+                      </div>
+                      <div class="row">
+                        <!-- Option 1 -->
+                        <div class="col-sm-6">
+                          <div class="row border-1">
+                            <div class="col-sm-8">
+                              <div class="form-group">
+                                <label>Label</label>
+                                <textarea name="array[][is_euqal_one]" class="form-control" rows="4"></textarea>
+                              </div>
+                            </div>
+                            <div class="col-sm-4">
+                              <div class="form-group">
+                                <label>Thumbnail</label><br>
+                                <div class="thumbnail-box" onclick="this.querySelector('input[type=file]').click();">
+                                  <i class="material-icons">image</i>
+                                  <img class="thumbnail-preview-img" style="display:none;">
+                                  <input type="file" name="array[][is_euqal_one_thumbnail]" class="thumbnail-input" accept="image/*" style="display:none;" onchange="previewThumbnail(this)">
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- Option 2 -->
+                        <div class="col-sm-6">
+                          <div class="row border-1">
+                            <div class="col-sm-8">
+                              <div class="form-group">
+                                <label>Label</label>
+                                <textarea name="array[][is_euqal_two]" class="form-control" rows="4"></textarea>
+                              </div>
+                            </div>
+                            <div class="col-sm-4">
+                              <div class="form-group">
+                                <label>Thumbnail</label><br>
+                                <div class="thumbnail-box" onclick="this.querySelector('input[type=file]').click();">
+                                  <i class="material-icons">image</i>
+                                  <img class="thumbnail-preview-img" style="display:none;">
+                                  <input type="file" name="array[][is_euqal_two_thumbnail]" class="thumbnail-input" accept="image/*" style="display:none;" onchange="previewThumbnail(this)">
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Add/Delete Icons -->
+                    <div class="col-sm-1 d-flex flex-column justify-content-between align-items-center" style="height: 100%;">
+                      <i class="material-icons delete-icon delte" style="cursor: pointer;">delete</i>
+                      <div style="flex-grow: 1;"></div>
+                      <i class="material-icons add-icon add" style="cursor: pointer;">add</i>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+ 
+</script>

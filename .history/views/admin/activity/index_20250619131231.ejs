@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <title>Sweet World Quiz</title>
+    <link href="/activity/admin/css/styles.css" rel="stylesheet">
+
+
+
+    <style>
+        :root {
+            --primary-color: #d45f42;
+            --correct-color: #4CAF50;
+            --incorrect-color: #f44336;
+            --neutral-color: #f9f9f9;
+            --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            --hover-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        body {
+
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .quiz-container {
+
+
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+
+
+        .nav-button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 30px;
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+    </style>
+</head>
+
+<body data-spy="scroll" class="pattern" data-target=".navbar-custom">
+    <div class="container-fluid">
+
+
+        <!-- ============== STORE SECTION =============== -->
+        <div class="row">
+            <section class="store" id="store">
+                <div class="container">
+
+                    <div class="quiz-container">
+
+                        <div id="question-container text-center" style="text-align: center;">
+                            <br>
+                            <button class="nav-button text-align" onclick="startQuiz()">Start</button>
+                        </div>
+
+                    </div>
+
+                </div>
+            </section>
+        </div>
+    </div>
+    <script>
+        function goFullscreen(id) {
+            var element = document.getElementById(id);
+            if (element.mozRequestFullScreen) {
+                element.mozRequestFullScreen();
+            } else if (element.webkitRequestFullScreen) {
+                element.webkitRequestFullScreen();
+            }
+        }
+    </script>
+    <script>
+        function startQuiz() {
+            window.location.href = "/admin/chooseup/home"; // This allows autoplay
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,167 @@
+<div class="modal modal-large" id="question_list_edit_modal">
+    <div class="modal-header">
+        <h3>Question List</h3>
+        <button type="button" class="close">
+            <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_7_7)">
+                    <path d="M25.5 8.5L8.5 25.5" stroke="#DADADA" stroke-width="2.125" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M9 9L26 26" stroke="#DADADA" stroke-width="2.125" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </g>
+                <defs>
+                    <clipPath id="clip0_7_7">
+                        <rect width="34" height="34" fill="white" />
+                    </clipPath>
+                </defs>
+            </svg>
+        </button>
+    </div>
+
+    <form id="question_list_edit_form" class="modal-body" method="post" enctype="multipart/form-data">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="form-group">
+                        <label for="edit_subject">Question</label>
+                        <textarea class="form-control" rows="4"></textarea>
+                        <p class="validate_error text-danger" id="edit_subject_error"></p>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="edit_topic">Thumbnail</label>
+                        <div class="thumbnail-box" onclick="this.querySelector('input[type=file]').click();">
+  <i class="material-icons">image</i>
+  <img class="thumbnail-preview-img" style="display:none;">
+  <input type="file" class="thumbnail-input" accept="image/*" style="display:none;" onchange="previewThumbnail(this)">
+</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-sm-6">
+                     <div class="row">
+                   <div class="col-sm-7">
+                    <div class="form-group">
+                        <label for="edit_subject"><input type="checkbox" class="limit-checkbox"> Option -1</label>
+                        <textarea class="form-control" rows="1"></textarea>
+                        <p class="validate_error text-danger" id="edit_subject_error"></p>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="edit_topic">Thumbnail</label>
+                        <div class="thumbnail-box" onclick="this.querySelector('input[type=file]').click();">
+  <i class="material-icons">image</i>
+  <img class="thumbnail-preview-img" style="display:none;">
+  <input type="file" class="thumbnail-input" accept="image/*" style="display:none;" onchange="previewThumbnail(this)">
+</div>
+                    </div>
+                </div>
+                </div>
+                </div>
+
+                <div class="col-sm-6">
+                     <div class="row">
+                   <div class="col-sm-7">
+                    <div class="form-group">
+                        <label for="edit_subject"><input type="checkbox" class="limit-checkbox"> Option -2</label>
+                        <textarea class="form-control" rows="1"></textarea>
+                        <p class="validate_error text-danger" id="edit_subject_error"></p>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="edit_topic">Thumbnail</label>
+                        <div class="thumbnail-box" onclick="this.querySelector('input[type=file]').click();">
+  <i class="material-icons">image</i>
+  <img class="thumbnail-preview-img" style="display:none;">
+  <input type="file" class="thumbnail-input" accept="image/*" style="display:none;" onchange="previewThumbnail(this)">
+</div>
+                    </div>
+                </div>
+                </div>
+                </div>
+
+            </div>
+            <div class="row">
+
+                <div class="col-sm-6">
+                     <div class="row">
+                   <div class="col-sm-7">
+                    <div class="form-group">
+                        <label for="edit_subject"><input type="checkbox" class="limit-checkbox"> Option -3</label>
+                        <textarea class="form-control" rows="1"></textarea>
+                        <p class="validate_error text-danger" id="edit_subject_error"></p>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="edit_topic">Thumbnail</label>
+                        <div class="thumbnail-box" onclick="this.querySelector('input[type=file]').click();">
+  <i class="material-icons">image</i>
+  <img class="thumbnail-preview-img" style="display:none;">
+  <input type="file" class="thumbnail-input" accept="image/*" style="display:none;" onchange="previewThumbnail(this)">
+</div>
+                    </div>
+                </div>
+                </div>
+                </div>
+
+                <div class="col-sm-6">
+                     <div class="row">
+                   <div class="col-sm-7">
+                    <div class="form-group">
+                        <label for="edit_subject"><input type="checkbox" class="limit-checkbox"> Option -4</label>
+                        <textarea class="form-control" rows="1"></textarea>
+                        <p class="validate_error text-danger" id="edit_subject_error"></p>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="edit_topic">Thumbnail</label>
+                        <div class="thumbnail-box" onclick="this.querySelector('input[type=file]').click();">
+  <i class="material-icons">image</i>
+  <img class="thumbnail-preview-img" style="display:none;">
+  <input type="file" class="thumbnail-input" accept="image/*" style="display:none;" onchange="previewThumbnail(this)">
+</div>
+                    </div>
+                </div>
+                </div>
+                </div>
+
+            </div>
+            
+        </div>
+        <div class="modal-footer">
+            <div class="options">
+                <button class="cancel" type="button">Cancel</button>
+                <button class="submit form-submit-button" id="level_edit_btn" type="submit">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
+<script>
+  const checkboxes = document.querySelectorAll('.limit-checkbox');
+
+  checkboxes.forEach((checkbox) => {
+    checkbox.addEventListener('change', () => {
+      const checkedCount = document.querySelectorAll('.limit-checkbox:checked').length;
+
+      if (checkedCount >= 2) {
+        checkboxes.forEach((cb) => {
+          if (!cb.checked) cb.disabled = true;
+        });
+      } else {
+        checkboxes.forEach((cb) => cb.disabled = false);
+      }
+    });
+  });
+</script>

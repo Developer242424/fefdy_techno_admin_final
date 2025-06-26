@@ -1,0 +1,143 @@
+<div class="modal modal-extra-large" id="organisation_edit_modal">
+    <div class="modal-header">
+        <h3>Edit Organisation</h3>
+        <button type="button" class="close">
+            <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_7_7)">
+                    <path d="M25.5 8.5L8.5 25.5" stroke="#DADADA" stroke-width="2.125" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M9 9L26 26" stroke="#DADADA" stroke-width="2.125" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </g>
+                <defs>
+                    <clipPath id="clip0_7_7">
+                        <rect width="34" height="34" fill="white" />
+                    </clipPath>
+                </defs>
+            </svg>
+        </button>
+    </div>
+    <form id="organisation_edit_form" class="modal-body" method="post" enctype="multipart/form-data">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="edit_org_name">Organisation/School Name</label>
+                        <input class="form-control" type="text" name="edit_org_name" id="edit_org_name"
+                            placeholder="Organisation / School name...">
+                        <p class="validate_error text-danger" id="edit_org_name_error"></p>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="edit_name">Organiser Name</label>
+                        <input class="form-control" type="text" name="edit_name" id="edit_name"
+                            placeholder="Organiser Name...">
+                        <p class="validate_error text-danger" id="edit_name_error"></p>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="edit_mobile">Mobile Number</label>
+                        <input class="form-control" type="text" name="edit_mobile" id="edit_mobile"
+                            placeholder="Mobile number...">
+                        <p class="validate_error text-danger" id="edit_mobile_error"></p>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="edit_email">Email Address</label>
+                        <input class="form-control" type="email" name="edit_email" id="edit_email"
+                            placeholder="Enter email">
+                        <p class="validate_error text-danger" id="edit_email_error"></p>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="edit_profile_image">Profile Image</label>
+                        <input class="form-control" accept=".png,.jpg,.jpeg,.webp" type="file" name="edit_profile_image"
+                            id="edit_profile_image">
+                        <a target="_blank">View file...</a>
+                        <p class="validate_error text-danger" id="edit_profile_image_error"></p>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="edit_subject">Subject</label>
+                        <select name="edit_subject[]" multiple id="edit_subject" class="form-control">
+                            <option value="">Select Subject</option>
+                        </select>
+                        <p class="validate_error text-danger" id="edit_subject_error"></p>
+                        <input type="hidden" name="edit_id" id="edit_id">
+                    </div>
+                </div>
+            </div>
+
+            <!-- dynamic row start -->
+
+            <div id="organisation_edit">
+                <div class="row form-row">
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label>Standard</label>
+                            <select name="edit_org_details[0][standard]" class="form-control edit_standard-dropdown">
+                                <option value="">Select Standard</option>
+                            </select>
+                            <p class="validate_error text-danger"></p>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label>Section</label>
+                            <select name="edit_org_details[0][section]" class="form-control edit_section-dropdown">
+                                <option value="">Select Section</option>
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="C">C</option>
+                                <option value="D">D</option>
+                                <option value="E">E</option>
+                                <option value="F">F</option>
+                            </select>
+                            <p class="validate_error text-danger"></p>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label>Level</label>
+                            <select name="edit_org_details[0][level]" class="form-control edit_level-dropdown">
+                                <option value="">Select Level</option>
+                                <% for (let i=1; i <=lvlftopic.levels; i++) { %>
+                                    <option value="<%= i %>">
+                                        <%= i %>
+                                    </option>
+                                    <% } %>
+                            </select>
+                            <p class="validate_error text-danger"></p>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <label>Student Count</label>
+                            <input class="form-control" type="number" name="edit_org_details[0][student_count]"
+                                placeholder="Enter count">
+                            <p class="validate_error text-danger"></p>
+                        </div>
+                    </div>
+                    <div class="col-sm-1 d-flex align-items-end">
+                        <div class="form-group">
+                            <button type="button" class="btn btn-danger" data-remove-btn>-</button>
+                            <button type="button" class="btn btn-success" data-add-btn>+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="modal-footer">
+            <div class="options">
+                <button class="cancel" type="button">Cancel</button>
+                <button class="submit form-submit-button" id="organisation_create_btn" type="submit">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>

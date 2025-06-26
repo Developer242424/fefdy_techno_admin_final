@@ -1,0 +1,45 @@
+<% if (typeof title !=='undefined' ) { %>
+    <h1>
+        <%= title %>
+    </h1>
+    <% } else { %>
+        <h1>Fefdy</h1>
+        <% } %>
+            <style>
+                .ss-main {
+                    height: 42px !important;
+                }
+            </style>
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header text-end">
+                        <button class="btn btn-info" onclick="OpenModal('organisation_create_modal')"><span><i
+                                    class="ti ti-code-plus px-1"></i><span>Add Organization</span></span></button>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-bordered table-striped" id="organisation-table">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Organisation/School Name</th>
+                                    <th>Organiser Name</th>
+                                    <th>Phone Number</th>
+                                    <th>Email Address</th>
+                                    <th>Standard</th>
+                                    <th>Section</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!--  -->
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+            <script>
+                window.LEVEL_COUNT = <%= JSON.stringify(lvlftopic.levels) %>;
+            </script>
+            <%- include('./create_modal.ejs') %>
+                <%- include('./edit_modal.ejs') %>

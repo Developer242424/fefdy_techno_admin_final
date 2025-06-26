@@ -1,0 +1,60 @@
+<div class="modal" id="category_create_modal">
+    <div class="modal-header">
+        <h3>Add category</h3>
+        <button type="button" class="close">
+            <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_7_7)">
+                    <path d="M25.5 8.5L8.5 25.5" stroke="#DADADA" stroke-width="2.125" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M9 9L26 26" stroke="#DADADA" stroke-width="2.125" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </g>
+                <defs>
+                    <clipPath id="clip0_7_7">
+                        <rect width="34" height="34" fill="white" />
+                    </clipPath>
+                </defs>
+            </svg>
+        </button>
+    </div>
+
+    <form id="category_create_form" class="modal-body" method="post" enctype="multipart/form-data">
+        <div class="container">
+            <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="title">Category Name</label>
+                            <input class="form-control" type="text" name="title" id="title" placeholder="Category Name">
+                            <p class="validate_error text-danger" id="title_error"></p>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="type">Type</label>
+                            <select name="type" id="type" class="form-control">
+                                <option value="">Select Type</option>
+                                <option value="PDF">PDF</option>
+                                <option value="Video">Video</option>
+                                <option value="Image">Image</option>
+                            </select>
+                            <p class="validate_error text-danger" id="type_error"></p>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="thumbnail">Thumbnail</label>
+                            <input type="file" accept=".jpg,.jpeg,.png,.webp,.gif" class="form-control" name="thumbnail"
+                                id="thumbnail">
+                            <p class="validate_error text-danger" id="thumbnail_error"></p>
+                        </div>
+                    </div>
+             </div>
+        </div>
+        <div class="modal-footer">
+            <div class="options">
+                <button class="cancel" type="button">Cancel</button>
+                <button class="submit form-submit-button" id="category_create_btn" type="submit">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,130 @@
+<% if (typeof title !=='undefined' ) { %>
+    <h1>
+        <%= title %>
+    </h1>
+    <% } else { %>
+        <h1>Fefdy</h1>
+        <% } %>
+
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <form id="export_create_form" class="row">
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label for="export_org_id">Subject</label>
+                                                <select name="export_org_id" class="form-control">
+                                                    <option value="">Select Subject</option>
+                                                    <option value="subject1">Select Subject 1</option>
+                                                </select>
+                                                <p class="validate_error text-danger" id="export_org_id_error"></p>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label for="export_standard">Topic</label>
+                                                <select name="export_topic" class="form-control">
+                                                    <option value="">Select Topic</option>
+                                                     <option value="Topic 1">Select Topic 1</option>
+                                                </select>
+                                                <p class="validate_error text-danger" id="export_standard_error"></p>
+                                            </div>
+                                        </div>
+                                         <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label for="export_standard">Level</label>
+                                                <select name="export_level" class="form-control">
+                                                    <option value="">Select Level</option>
+                                                    <option value="Level 1">Select Level 1</option>
+                                                </select>
+                                                <p class="validate_error text-danger" id="export_standard_error"></p>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label for="export_standard">Sub Topic</label>
+                                                <select name="export_sub_topic" class="form-control">
+                                                    <option value="">Select Sub Topic</option>
+                                                    <option value="sub_topic 1">Select Sub Topic 1</option>
+                                                </select>
+                                                <p class="validate_error text-danger" id="export_standard_error"></p>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label for="export_standard">Question Type</label>
+                                                <select name="export_question_type" class="form-control">
+                                                    <option value="">Select Question Type</option>
+                                                    <option value="Question_Type 1">Select Question Type 1</option>
+                                                </select>
+                                                <p class="validate_error text-danger" id="export_standard_error"></p>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4"> 
+                                           <button type="submit" class="btn btn-info form-submit-button_1 mt-4">submit</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                    </div>
+                </div>
+              <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive-container"><div id="levels-table-wrapper"><div class="table-controls d-flex flex-wrap justify-content-between gap-2 mb-2 align-items-center">
+            <div>
+                Show 
+                <select id="levels-table-per-page" class="form-select d-inline-block w-auto">
+                    <option value="5">5</option><option value="10">10</option><option value="20">20</option><option value="All">All</option>
+                </select> entries
+            </div>
+        
+            <input type="text" id="levels-table-search" class="form-control w-auto" placeholder="Search..." style="max-width: 200px;">
+        </div><table class="table table-bordered table-striped" id="levels-table">
+                            <thead class="table-dark">
+                                <tr><th class=" ">#</th>
+                                <th class="sortable  " data-key="subject_name">Question </th>
+                                <th class="  " data-key="thumbnail">Thumbnail</th>
+                                <th class="  " data-key="action">Actions</th>
+                                </tr>
+            <tr>
+           
+                           
+                            <tbody><tr><td class="" data-label="#">1</td>
+                            <td class="" data-label="Subject_name">Mathematics</td>
+                            
+                            
+                            <td class="" data-label="Thumbnail"><img src="../uploads/levels/1747904805745-370788675.jpg" alt="Thumbnail" style="width: 50px;"></td>
+                            <td class="" data-label="Action">
+                    <button class="btn btn-primary btn-sm" onclick="OpenModal('question_list_edit_modal')">Edit</button>
+                    <button class="btn btn-danger btn-sm">Delete</button>
+                  </td></tr>
+                  
+                  <tr>
+           
+                           
+                            <tbody><tr><td class="" data-label="#">1</td>
+                            <td class="" data-label="Subject_name">Mathematics</td>
+                            
+                            
+                            <td class="" data-label="Thumbnail"><img src="../uploads/levels/1747904805745-370788675.jpg" alt="Thumbnail" style="width: 50px;"></td>
+                            <td class="" data-label="Action">
+                    <button class="btn btn-primary btn-sm" onclick="OpenModal('question_list_math_edit_modal')">Edit</button>
+                    <button class="btn btn-danger btn-sm">Delete</button>
+                  </td></tr>
+                  </tbody>
+                        </table><div class="d-flex justify-content-end mt-2" id="levels-table-pagination"><div class="btn-group"><button class="btn btn-sm btn-primary" data-page="1">1</button><button class="btn btn-sm btn-outline-primary" data-page="2">2</button><button class="btn btn-sm btn-outline-secondary" disabled="">...</button><button class="btn btn-sm btn-outline-primary" data-page="8">8</button></div></div></div></div>
+
+                    </div>
+                </div>
+            </div>
+            
+            
+                <%- include('./edit_modal.ejs') %>
+                <%- include('./math_edit_modal.ejs') %>

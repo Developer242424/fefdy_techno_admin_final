@@ -1,0 +1,114 @@
+<div class="modal modal-extra-large" id="users_create_modal">
+    <div class="modal-header">
+        <h3>Add Users </h3>
+        <button type="button" class="close">
+            <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_7_7)">
+                    <path d="M25.5 8.5L8.5 25.5" stroke="#DADADA" stroke-width="2.125" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M9 9L26 26" stroke="#DADADA" stroke-width="2.125" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </g>
+                <defs>
+                    <clipPath id="clip0_7_7">
+                        <rect width="34" height="34" fill="white" />
+                    </clipPath>
+                </defs>
+            </svg>
+        </button>
+    </div>
+    <form id="users_create_form" class="modal-body" method="post" enctype="multipart/form-data">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="org_id">Organisation</label>
+                        <select name="org_id" id="org_id" class="form-control">
+                            <option value="">No data found</option>
+                        </select>
+                        <p class="validate_error text-danger" id="org_id_error"></p>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input class="form-control" type="text" name="name" id="name" placeholder="Name...">
+                        <p class="validate_error text-danger" id="name_error"></p>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input class="form-control" type="email" name="email" id="email" placeholder="Email Address...">
+                        <p class="validate_error text-danger" id="email_error"></p>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="mobile">Phone Number</label>
+                        <input class="form-control" type="text" name="mobile" id="mobile"
+                            placeholder="mobile number...">
+                        <p class="validate_error text-danger" id="mobile_error"></p>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="username">User Name</label>
+                        <input class="form-control" type="text" name="username" id="username"
+                            placeholder="User Name...">
+                        <p class="validate_error text-danger" id="username_error"></p>
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input class="form-control" type="password" name="password" id="password"
+                            placeholder="password">
+                        <p class="validate_error text-danger" id="password_error"></p>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="standard">Standard</label>
+                        <select name="standard" id="standard" class="form-control">
+                            <option value="">No data found</option>
+                        </select>
+                        <p class="validate_error text-danger" id="standard_error"></p>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label id="section">Section</label>
+                        <select name="section" id="section" class="form-control section-dropdown">
+                            <option value="">Select Section</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                            <option value="E">E</option>
+                            <option value="F">F</option>
+                        </select>
+                        <p class="validate_error text-danger" id="section_error"></p>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="profile_image">Profile pictures</label>
+                        <input type="file" accept=".jpg,.jpeg,.png,.webp" class="form-control" name="profile_image"
+                            id="profile_image">
+                        <p class="validate_error text-danger" id="profile_image_error"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="options">
+                    <button class="cancel" type="button">Cancel</button>
+                    <button class="submit form-submit-button" id="users_create_btn" type="submit">Submit</button>
+                </div>
+            </div>
+
+
+        </div>
+    </form>
+</div>

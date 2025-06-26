@@ -1,0 +1,23 @@
+PassengerAppRoot "/home/fefdybraingym/public_html/feboo.fefdybraingym.com"
+PassengerBaseURI "/"
+PassengerNodejs "/home/fefdybraingym/nodevenv/public_html/feboo.fefdybraingym.com/18/bin/node"
+PassengerAppType node
+PassengerStartupFile server.js
+PassengerAppLogFile "/home/fefdybraingym/npmlogs/npmerrornew.log"
+PassengerAppEnv development
+
+RewriteEngine On
+RewriteCond %{REQUEST_URI} ^/
+RewriteRule ^ - [L]
+
+<IfModule headers_module>
+  # Remove any Access-Control-Allow-Origin headers added by Apache before response leaves
+  Header always unset Access-Control-Allow-Origin
+</IfModule>
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# Set the “ea-php81” package as the default “PHP” programming language.
+<IfModule mime_module>
+  AddHandler application/x-httpd-ea-php81 .php .php8 .phtml
+</IfModule>
+# php -- END cPanel-generated handler, do not edit

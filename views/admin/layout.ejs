@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description"
+        content="Mantis is made using Bootstrap 5 design framework. Download the free admin template & use it for your project.">
+    <meta name="keywords"
+        content="Mantis, Dashboard UI Kit, Bootstrap 5, Admin Template, Admin Dashboard, CRM, CMS, Bootstrap Admin Template">
+    <meta name="author" content="CodedThemes">
+
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap"
+        id="main-font-link">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/assets/fonts/tabler-icons.min.css">
+    <link rel="stylesheet" href="/assets/fonts/feather.css">
+    <link rel="stylesheet" href="/assets/fonts/fontawesome.css">
+    <link rel="stylesheet" href="/assets/fonts/material.css">
+    <link rel="stylesheet" href="/assets/css/style.css" id="main-style-link">
+    <link rel="stylesheet" href="/assets/css/style-preset.css">
+    <link href="https://unpkg.com/slim-select@latest/dist/slimselect.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+    </link>
+
+</head>
+
+<body data-pc-preset="preset-1" data-pc-direction="ltr" data-pc-theme="light">
+    <div class="loader-bg">
+        <div class="loader-track">
+            <div class="loader-fill"></div>
+        </div>
+    </div>
+    <%- include('./layouts/sidebar.ejs') %>
+        <%- include('./layouts/header.ejs') %>
+
+            <div class="pc-container">
+                <div class="pc-content">
+                    <div class="page-header">
+                        <div class="page-block">
+                            <div class="row align-items-center">
+                                <div class="col-md-12">
+                                    <div class="page-header-title">
+                                        <h5 class="m-b-10">Home</h5>
+                                    </div>
+                                    <ul class="breadcrumb">
+                                        <li class="breadcrumb-item">
+                                            <a href="<%= homeurl %>">Home</a>
+                                        </li>
+                                        <li class="breadcrumb-item">
+                                            <a href="<%= url %>">
+                                                <%= title %>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <%- include(content) %>
+                    </div>
+                </div>
+            </div>
+
+            <%- include('./layouts/footer.ejs') %>
+
+                <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+                <script src="/js/custom.js"></script>
+                <script src="/js/handler.js"></script>
+
+                <% if(url==='/admin/dashboard' ){ %>
+                    <script src="/assets/js/plugins/apexcharts.min.js"></script>
+                    <script src="/assets/js/pages/dashboard-default.js"></script>
+                    <% } %>
+                        <% if(url==='/admin/subjects' ){ %>
+                            <script src="/js/subject.js"></script>
+                            <% } %>
+                                <% if(url==='/admin/topics' ){ %>
+                                    <script src="/js/topics.js"></script>
+                                    <% } %>
+                                        <% if(url==='/admin/levels' ){ %>
+                                            <script src="/js/level.js"></script>
+                                            <% } %>
+                                                <% if(url==='/admin/category' ){ %>
+                                                    <script src="/js/category.js"></script>
+                                                    <% } %>
+                                                        <% if(url==='/admin/subtopic' ){ %>
+                                                            <script src="/js/subtopic.js"></script>
+                                                            <% } %>
+                                                                <% if(url==='/admin/organisation' ){ %>
+                                                                    <script src="/js/organisation.js"></script>
+                                                                    <% } %>
+                                                                        <% if(url==='/admin/users' ){ %>
+                                                                            <script src="/js/loginusers.js"></script>
+                                                                            <% } %>
+                                                                                <% if(url==='/admin/bulk' ){ %>
+                                                                                    <script
+                                                                                        src="/js/exportandimport.js"></script>
+                                                                                    <% } %>
+                                                                                        <% if(url==='/admin/create-questions'
+                                                                                             || url==='/admin/questions-list'){ %>
+                                                                                            <script
+                                                                                                src="/js/questions.js"></script>
+                                                                                            <% } %>
+
+                                                                                                <script
+                                                                                                    src="/assets/js/plugins/popper.min.js"></script>
+                                                                                                <script
+                                                                                                    src="https://d2cwebsolutions.in/easytable-1.0.0/easytable-1.0.0.js"></script>
+                                                                                                <script
+                                                                                                    src="/assets/js/plugins/simplebar.min.js"></script>
+                                                                                                <script
+                                                                                                    src="/assets/js/plugins/bootstrap.min.js"></script>
+                                                                                                <script
+                                                                                                    src="/assets/js/fonts/custom-font.js"></script>
+                                                                                                <script
+                                                                                                    src="/assets/js/pcoded.js"></script>
+                                                                                                <script
+                                                                                                    src="/assets/js/plugins/feather.min.js"></script>
+                                                                                                <script
+                                                                                                    src="https://unpkg.com/slim-select@latest/dist/slimselect.min.js"></script>
+
+
+</body>
+
+</html>

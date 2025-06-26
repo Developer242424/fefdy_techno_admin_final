@@ -1,0 +1,58 @@
+<% if (typeof title !=='undefined' ) { %>
+    <h1>
+        <%= title %>
+    </h1>
+    <% } else { %>
+        <h1>Fefdy</h1>
+        <% } %>
+
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header text-end">
+                    <button class="btn btn-info" onclick="OpenModal('users_create_modal')"><span><i
+                                class="ti ti-code-plus px-1"></i><span>Add Users</span></span></button>
+
+                    <button class="btn btn-info" onclick="OpenModal('individual_create_modal')"><span><i
+                                class="ti ti-code-plus px-1"></i><span>Add Individual Users</span></span></button>
+                </div>
+
+                <div class="card-body">
+                    <table class="table table-bordered table-striped" id="loginusers-table">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>#</th>
+                                <th>Organisation</th>
+                                <th>Name</th>
+                                <th>Email Address</th>
+                                <th>Phone Number</th>
+                                <th>Standard</th>
+                                <th>Section</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>St.Britto</td>
+                                <td>demo users</td>
+                                <td>demo@gmail.com</td>
+                                <td>0000000000</td>
+                                <td>1 Standard</td>
+                                <td>A Section</td>
+                                <td>
+                                  <button class="btn btn-primary btn-sm"onclick="OpenModal('users_edit_modal')">Edit</button>
+                                  <button class="btn btn-primary btn-sm"onclick="OpenModal('individual_edit_modal')">Individual Edit</button>
+                                  <button class="btn btn-danger btn-sm" onclick="deleteRow(this)">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+    
+                </div>
+            </div>
+        </div>
+        <%- include('./create_modal.ejs') %>
+        <%- include('./edit_modal.ejs') %>
+        <%- include('./individual_create_modal.ejs') %>
+        <%- include('./individual_edit_modal.ejs') %>
+        
