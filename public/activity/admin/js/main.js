@@ -44,7 +44,7 @@ function speakQuestionOrResult() {
 
 let questions = [];
 let questionsLoaded = false;
-
+let questionIds = "";
 function fetchQuestions(callback) {
   const params = new URLSearchParams(window.location.search);
   const sid = params.get("sid");
@@ -71,7 +71,7 @@ function fetchQuestions(callback) {
       if (Array.isArray(res)) {
         questions = res;
         questionsLoaded = true;
-        console.log("✅ Questions loaded:", questions);
+        // console.log("✅ Questions loaded:", questions);
 
         userAnswers = new Array(questions.length).fill(null);
         userAnswers[0] = [];
@@ -79,6 +79,7 @@ function fetchQuestions(callback) {
         if (typeof callback === "function") {
           callback();
         }
+        questionIds = questions.map((q) => q.questionid);
       } else {
         console.warn("⚠️ Invalid question data received.");
       }
@@ -670,4 +671,48 @@ function markAnswerFeedback(selectedSet, correctSet, callback, speak = true) {
   } else {
     setTimeout(callback, 0);
   }
+}
+
+function completeTest() {
+  const params = new URLSearchParams(window.location.search);
+  const sid = params.get("sid");
+  const tid = params.get("tid");
+  const lid = params.get("lid");
+  const stid = params.get("stid");
+  const qid = params.get("qid");
+  const ust = params.get("ust");
+
+  const data = {
+    sid,
+    tid,
+    lid,
+    stid,
+    qid,
+    ust,
+    correctAnswers,
+    wrongAnswers,
+    totalTime,
+    questionIds,
+  };
+  $.ajax({
+    url: "/admin/activity/questions/history",
+    method: "POST",
+    contentType: "application/json",
+    data: JSON.stringify(data),
+    success: function (res) {
+      if (res.status === 200) {
+        // startAgain();
+        location.reload();
+      } else {
+        console.warn("⚠️ Invalid question data received.");
+      }
+    },
+    error: function (xhr) {
+      let errorMessage = "An error occurred.";
+      if (xhr.responseJSON && xhr.responseJSON.message) {
+        errorMessage = xhr.responseJSON.message;
+      }
+      console.warn("⚠️", errorMessage);
+    },
+  });
 }

@@ -14,6 +14,7 @@ class TestHistory extends Model {
 
 TestHistory.init(
   {
+    user_id: { type: DataTypes.INTEGER, allowNull: true },
     subject: { type: DataTypes.INTEGER, allowNull: true },
     topic: { type: DataTypes.INTEGER, allowNull: true },
     level_id: { type: DataTypes.INTEGER, allowNull: true },

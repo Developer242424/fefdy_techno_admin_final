@@ -31,6 +31,7 @@ router.get("/chooseup/home", (req, res) => {
   res.render("admin/activity/home", { layout: false });
 });
 router.post("/activity/questions/get", ActivityController.getQuestions);
+router.post("/activity/questions/history", ActivityController.entryHistory);
 
 // ✅ Public routes (excluded from auth check)
 router.get("/login", AuthController.loginindex);
