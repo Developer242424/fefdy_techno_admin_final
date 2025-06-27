@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <title>Sweet World Quiz</title>
+    <link href="/activity/admin/css/styles.css" rel="stylesheet">
+    <link href="/activity/admin/css/main.css" rel="stylesheet">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        #question-text,
+        #question-text.hovered-question {
+            cursor: default !important;
+        }
+
+        #clickPrompt {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #fff8dc;
+            padding: 20px 30px;
+            border: 2px dashed #555;
+            font-size: 18px;
+            color: #000;
+            z-index: 1000;
+        }
+    </style>
+</head>
+
+<body data-spy="scroll" class="pattern" data-target=".navbar-custom">
+    <audio id="introAudio" src="/activity/admin/intro.mp3" preload="auto" autoplay playsinline></audio>
+    <audio id="backgroundAudio" src="/activity/admin/backgorund.mp3" preload="auto" loop autoplay muted
+        playsinline></audio>
+    <!-- <body data-spy="scroll"  data-target=".navbar-custom"> -->
+
+
+
+    <!-- ============== STORE SECTION =============== -->
+
+    <section class="store" id="store">
+        <div class="container-fluid">
+            <div class="row">
+                <h1> Level 1 - Questions </h1>
+            </div>
+            <div class="quiz-container">
+
+                <div class="progress-container">
+                    <div class="progress-bar" id="progress-bar"></div>
+                </div>
+
+                <div id="question-container">
+                    <!-- Question and image will be inserted here dynamically -->
+                </div>
+
+                <div id="answers-container">
+                    <!-- Answer options will be inserted here -->
+                </div>
+
+                <div id="timer">Time: <span id="timer-count">0</span> seconds</div>
+
+                <div id="navigation">
+                    <button id="prev-btn" class="nav-button" onclick="navigate('previous')" disabled>Previous</button>
+                    <button id="next-btn" class="nav-button" onclick="navigate('next')" disabled>Next Question</button>
+                </div>
+            </div>
+
+            <!-- Modal for Results -->
+            <div id="result-modal" class="modal">
+                <div class="modal-content">
+
+                    <h2>Quiz Results</h2>
+                    <p>Correct Answers: <span id="correct-count">0</span></p>
+                    <p>Wrong Answers: <span id="wrong-count">0</span></p>
+                    <p>Total Time Taken: <span id="total-time">0</span> seconds</p>
+                    <button class="start-again-btn" onclick="startAgain()">Replay</button>
+                    <button class="start-again-btn" onclick="completeTest()">Submit</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+
+    <!-- ============== SCRIPTS =============== -->
+    <div class="loading" id="loading-screen">
+        <div class="spinner"></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="/activity/admin/js/main.js"></script>
+    <!-- <script src="js/main.js"></script> -->
+
+
+</body>
+
+</html>
