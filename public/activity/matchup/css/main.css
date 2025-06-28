@@ -1,0 +1,332 @@
+@font-face {
+  font-family: 'Rocher';
+  src: url(https://assets.codepen.io/9632/RocherColorGX.woff2);
+}
+
+:root {
+  --primary-color: #d45f42;
+  --correct-color: #4CAF50;
+  --incorrect-color: #f44336;
+  --neutral-color: #f9f9f9;
+  --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --hover-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+body {
+  font-family: sans-serif;
+  background: #f0f9ff;
+  margin: 0;
+  padding: 20px;
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  color: var(--primary-color);
+  margin: 10px;
+  font-size: 40px;
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+}
+
+h2 {
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 10px 25px;
+  font-size: 16px;
+  background: #4a2ea0;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: #999;
+  cursor: not-allowed;
+}
+
+#checkBtn {
+  margin-bottom: 0;
+}
+
+#timer {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #555;
+}
+
+#timer-count {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+/* Match Area Background */
+#question-container {
+  background-color: #ffddac;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 10px 0;
+}
+
+#question-container > .side-image {
+  flex: 0 0 270px;
+  margin: 0;
+}
+
+#question-container .side-image img {
+  width: 100%;
+  border-radius: 8px;
+  display: block;
+}
+
+#question-container .matching-rows {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+#mainHeading {
+
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 0.15em solid orange; /* optional cursor effect */
+}
+
+/* Matching Items */
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.store.container-fluid {
+  background: url(../images/creampaper.png);
+  border: 2px dashed #d45f42;
+  border-radius: 2rem;
+  padding: 20px;
+}
+.item {
+  background: #fffbe0;
+  padding: 15px 20px;
+  border-radius: 10px;
+  font-weight: bold;
+  position: relative;
+  width: 250px;
+  height: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.item.right {
+  background: #e0fff5;
+}
+
+.item.right img {
+  max-height: 100%;
+  max-width: 100%;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Dots for Matching Lines */
+.dot {
+  height: 16px;
+  width: 16px;
+  background: #ffcc00;
+  border: 2px solid #333;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  z-index: 2;
+}
+
+.dot.left {
+  right: -10px;
+}
+
+.dot.right {
+  left: -10px;
+}
+
+.dot.left.active,
+.dot.right.active {
+   background: #0bdf75;
+  border: 2px solid #333;
+}
+.instruction-text{
+  font-size: 1.2em; 
+  font-family: 'Comic Sans MS', 'Fredoka', 'Poppins', cursive, sans-serif;
+  font-size: 28px;
+  color: #4a2d8b; /* deep purple */
+  background-color: #fff3cd; /* light yellow */
+  border: 3px dashed #ffa07a; /* cute soft border */
+  padding: 12px 20px;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  text-align: center;
+  max-width: 90%;
+  margin: 10px auto;
+  transition: transform 0.3s ease;
+}
+.instruction-text:hover {
+  transform: scale(1.05);
+  background-color: #ffe0b3; /* lighter yellow on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+.instruction-text {
+  border-right: 2px solid #4a2d8b;
+  white-space: nowrap;
+  overflow: hidden;
+}
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Utility Classes */
+.noselect {
+  user-select: none;
+}
+
+.colour-green {
+  color: var(--correct-color);
+}
+
+.colour-red {
+  color: var(--incorrect-color);
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding-top: 50px;
+  backdrop-filter: blur(5px);
+}
+/* Up-Down animation */
+/* Up-down animation for the boy image */
+@keyframes floatUpDown {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0); }
+}
+
+.float-updown {
+  animation: floatUpDown 2s ease-in-out infinite;
+}
+
+/* Down-up animation for the girl image */
+@keyframes floatDownUp {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(20px); }
+  100% { transform: translateY(0); }
+}
+
+.float-downup {
+  animation: floatDownUp 2s ease-in-out infinite;
+}
+
+.modal-content {
+  background-color: white;
+  margin: auto;
+  padding: 30px;
+  width: 80%;
+  max-width: 500px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  animation: modalFadeIn 0.4s;
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.close-btn {
+  color: #aaa;
+  font-size: 28px;
+  font-weight: bold;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  transition: all 0.3s ease;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+  color: black;
+  cursor: pointer;
+}
+
+.modal h2 {
+  color: var(--primary-color);
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+
+.modal p {
+  font-size: 1.2rem;
+  margin: 15px 0;
+}
+
+.start-again-btn {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow);
+}
+
+.start-again-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--hover-shadow);
+}
+
+/* Responsive Fix */
+@media (max-width: 768px) {
+  .item {
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  #question-container {
+    flex-direction: column;
+  }
+
+  #question-container > .side-image {
+    flex: none;
+    margin-bottom: 1rem;
+  }
+}
