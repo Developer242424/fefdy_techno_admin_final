@@ -33,6 +33,15 @@ router.get("/chooseup/home", (req, res) => {
 router.post("/activity/questions/get", ActivityController.getQuestions);
 router.post("/activity/questions/history", ActivityController.entryHistory);
 
+router.get("/match", (req, res) => {
+  res.render("admin/activity/matchup/index", { layout: false });
+});
+
+router.get("/match/home", (req, res) => {
+  res.render("admin/activity/matchup/home", { layout: false });
+});
+router.post("/activity/questions/match/get", ActivityController.getQuestionsMatchup);
+
 // ✅ Public routes (excluded from auth check)
 router.get("/login", AuthController.loginindex);
 router.post("/login", AuthController.login);

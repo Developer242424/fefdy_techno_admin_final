@@ -109,7 +109,7 @@ button:disabled {
   width: 100%;
 }
 .store.container-fluid {
-  background: url(../images/creampaper.png);
+  background: url(/activity/matchup/images/creampaper.png);
   border: 2px dashed #d45f42;
   border-radius: 2rem;
   padding: 20px;

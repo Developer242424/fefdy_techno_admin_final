@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Match Game with Sounds & Timer</title>
+
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Custom CSS -->
+    <link href="/activity/matchup/css/styles.css" rel="stylesheet" />
+    <link href="/activity/matchup/css/main.css" rel="stylesheet" />
+    <style>
+        #mainHeading {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #2c3e50;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            visibility: visible !important;
+            /* Force visibility */
+            opacity: 1 !important;
+            /* Force opacity */
+        }
+    </style>
+</head>
+
+<body class="pattern">
+
+    <section class="store noselect py-4">
+        <div class="container-fluid">
+            <!-- Main Heading -->
+            <h2 id="mainHeading" class="text-center mb-4"></h2>
+
+            <!-- Instruction Text -->
+            <div id="instruction-text" class="instruction-text text-center fw-bold mb-4"
+                style="font-size: 1.2em; color: #004080;">
+            </div>
+            <input type="hidden" id="instruction_index">
+
+            <!-- Audio Assets -->
+            <audio id="introAudio" src="/activity/matchup/intro.mp3" muted autoplay preload="auto"></audio>
+            <audio id="dragAudio" src="/activity/matchup/drag.mp3" preload="auto"></audio>
+            <audio id="dropAudio" src="/activity/matchup/drop.mp3" preload="auto"></audio>
+            <audio id="correctAudio" src="/activity/matchup/correct.mp3" preload="auto"></audio>
+            <audio id="wrongAudio" src="/activity/matchup/wrong.mp3" preload="auto"></audio>
+            <audio id="resultAudio" src="/activity/matchup/result.mp3" preload="auto"></audio>
+            <audio id="backgorundAudio" src="/activity/matchup/backgorund.mp3" preload="auto"></audio>
+
+            <!-- Matching Section -->
+            <div id="question-container" class="row rounded justify-content-center mx-0">
+
+                <!-- Left Image -->
+                <div class="col-md-2 d-flex justify-content-center align-items-center mb-3 mb-md-0">
+                    <img src="/activity/matchup/images/boy-1.png" alt="Left Side Image" class="img-fluid rounded float-updown" />
+                </div>
+
+                <!-- Matching Rows (Initially Hidden) -->
+                <div class="col-md-8 d-none" id="matching-area">
+                    <!-- Dynamic Matching Content will go here -->
+                </div>
+
+                <!-- Right Image -->
+                <div class="col-md-2 d-flex justify-content-center align-items-center mt-3 mt-md-0">
+                    <img src="/activity/matchup/images/girl-1.png" alt="Right Side Image" class="img-fluid rounded float-downup" />
+                </div>
+            </div>
+
+            <!-- Timer + Button Section (Initially Hidden) -->
+            <div class="row mt-4 mb-4 d-none" id="timer-section">
+                <div class="col-md-6 text-start d-none" id="timer-column">
+                    <div id="timer">Time: <span id="timer-count">00:00</span> seconds</div>
+                </div>
+                <div class="col-md-6 text-end d-none" id="check-btn-column">
+                    <button id="checkBtn" onclick="checkAnswers()" disabled>Check Answers</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Result Modal -->
+    <div id="resultPopup" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="restartGame()" id="close-modal">&times;</span>
+            <h2>Results</h2>
+            <p id="scoreText"></p>
+            <button onclick="restartGame()" class="start-again-btn">Restart</button>
+        </div>
+    </div>
+
+    <!-- Canvas Overlays -->
+    <canvas id="canvas"
+        style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1000;"></canvas>
+    <canvas id="confetti-canvas"
+        style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 99999;"></canvas>
+
+    <!-- JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="/activity/matchup/js/new.js"></script>
+
+</body>
+
+</html>
